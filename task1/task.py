@@ -1,15 +1,10 @@
 import csv
+import sys
 
-i = 5
-j = 3
+data = sys.argv[1]
+row = int(sys.argv[2])
+column = int(sys.argv[3])
 
-with open('file.csv', 'r', encoding='utf-8') as csvfile:
-    csvreader = csv.reader(csvfile)
-
-    for _ in range(i - 1):
-        next(csvreader)
-    
-    row = next(csvreader)
-    element = row[j - 1]
-
-    print(f'На позиции ({i}, {j}): {element}')
+with open(data, newline='') as csvfile:
+    csv_table = list(csv.reader(csvfile, delimiter=','))
+    print(csv_table[row - 1][column - 1])
